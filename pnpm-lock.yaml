@@ -22,6 +22,9 @@ dependencies:
   vite-plugin-pages:
     specifier: ^0.29.0
     version: 0.29.0(vite@4.3.3)
+  vite-plugin-vue-layouts:
+    specifier: ^0.8.0
+    version: 0.8.0(vite@4.3.3)(vue-router@4.1.6)(vue@3.2.47)
   vue:
     specifier: ^3.2.47
     version: 3.2.47
@@ -4634,6 +4637,23 @@ packages:
       picocolors: 1.0.0
       vite: 4.3.3(@types/node@18.16.2)
       yaml: 2.2.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /vite-plugin-vue-layouts@0.8.0(vite@4.3.3)(vue-router@4.1.6)(vue@3.2.47):
+    resolution: {integrity: sha512-UZW2nSV2LraTSe7gsAL46hfdi7a0X1RvkGGoJVtA2O8beu7anzpXFwQLou8+kHy31CzVycT4gIPySBsHhtBN5g==}
+    peerDependencies:
+      vite: ^2.5.0 || ^3.0.0-0 || ^4.0.0
+      vue: ^2.6.12 || ^3.2.4
+      vue-router: ^3.5.1 || ^4.0.11
+    dependencies:
+      '@vue/compiler-sfc': 3.2.47
+      debug: 4.3.4
+      fast-glob: 3.2.12
+      vite: 4.3.3(@types/node@18.16.2)
+      vue: 3.2.47
+      vue-router: 4.1.6(vue@3.2.47)
     transitivePeerDependencies:
       - supports-color
     dev: false

@@ -5,12 +5,14 @@ import UnoCSS from 'unocss/vite'
 import presetUno from '@unocss/preset-uno'
 import AutoImport from 'unplugin-auto-import/vite'
 import Pages from 'vite-plugin-pages'
+import Layouts from 'vite-plugin-vue-layouts'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   base: './',
   plugins: [
     vue(),
     Pages(),
+    Layouts(),
     UnoCSS({
       presets: [presetUno()],
     }),
@@ -21,7 +23,11 @@ export default defineConfig(({ mode }) => ({
       cache: true,
     }),
   ],
-  resolve: { alias: { '~': path.resolve(__dirname, 'src/') } },
+  resolve: {
+    alias: {
+      '~/': `${path.resolve(__dirname, 'src')}/`,
+    },
+  },
   server: {
     port: 3000,
   },

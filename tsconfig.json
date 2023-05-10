@@ -3,8 +3,9 @@
     "target": "ESNext",
     "baseUrl": "./",
     "paths": {
-      "~": ["src/*"]
+      "~/*": ["src/*"]
     },
+    "types": ["vite-plugin-vue-layouts/client"],
     "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "node",
