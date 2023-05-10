@@ -9,6 +9,7 @@ declare module '*.vue' {
 
 interface ImportMetaEnv {
     //readonly VITE_BASE_URL: 'http://localhost:3001' | ''
+    
 }
 interface ImportMeta {
     readonly env: ImportMetaEnv
