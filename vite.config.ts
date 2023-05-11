@@ -11,7 +11,9 @@ export default defineConfig(({ mode }) => ({
   base: './',
   plugins: [
     vue(),
-    Pages(),
+    Pages({
+      exclude: ['**/components/*.vue'],
+    }),
     Layouts(),
     UnoCSS({
       presets: [presetUno()],

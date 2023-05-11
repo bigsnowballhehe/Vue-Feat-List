@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang='ts'>
-console.log('I am marcros index.vue')
+console.log('I am marcros props.vue')
 </script>
 
 <route lang="yaml">
