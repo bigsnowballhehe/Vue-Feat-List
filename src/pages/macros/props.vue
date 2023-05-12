@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <span>define props</span>
-  </div>
+  <div />
 </template>
 
 <script setup lang='ts'>

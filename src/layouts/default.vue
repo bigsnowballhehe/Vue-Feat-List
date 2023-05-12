@@ -10,21 +10,27 @@
 import { useRoute } from 'vue-router'
 import SiderBar from '~/components/SiderBar/index.vue'
 import Demo from '~/components/Demo/index.vue'
+
 const curCode = ref('')
 
-console.log('I am marcros props.vue')
 const routes = useRoute()
 const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw' })
-console.log(routes.name)
-modules[`../pages${routes.path?.toString()}.vue`]().then((arg) => {
-  console.log(arg)
-  curCode.value = arg
-})
-// for (const path in modules) {
-//   modules[path]().then((mod) => {
-//     console.log(path, typeof path)
-//   })
-// }
-// console.log(modules['../pages/index.vue'])
-console.log(typeof routes.name)
+
+function getModKey() {
+  const pathIndex = routes.path.split('/')
+  pathIndex.shift()
+  const pathArr = pathIndex.map((item: string) => {
+    return item[0].toUpperCase() + item.slice(1)
+  })
+  const modKey = `../pages/${pathArr[0]}/${pathArr[1]}.vue`
+  return modKey
+}
+
+console.log(routes)
+watch(() => routes.path, async () => {
+  const modKey = getModKey()
+  if (Object.hasOwnProperty.call(modules, modKey)) {
+    curCode.value = await modules[modKey]()
+  }
+}, { immediate: true })
 </script>

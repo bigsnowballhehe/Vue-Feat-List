@@ -5,7 +5,7 @@
     "paths": {
       "~/*": ["src/*"]
     },
-    "types": ["vite-plugin-vue-layouts/client"],
+    "types": ["vite-plugin-vue-layouts/client", "node"],
     "useDefineForClassFields": true,
     "module": "ESNext",
     "moduleResolution": "node",
