@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div v-html="parseCode" />
+    <pre>
+      <code>{{ sourceCode }}</code>
+    </pre>
     <button class="cursor-pointer" @click="usePlayGround(props.sourceCode)">
       edit in SFC
     </button>
@@ -8,17 +10,11 @@
 </template>
 
 <script setup lang='ts'>
-import { getHighlighter } from 'shiki'
 import { utoa } from '~/utils'
 const props = defineProps<{
   sourceCode: string
 }>()
-const parseCode = ref('')
 
-watch(() => props.sourceCode, async () => {
-  const ter = await getHighlighter({ })
-  console.log(ter)
-})
 function usePlayGround(code: string) {
   const obj = {
     'App.vue': code,
