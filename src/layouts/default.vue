@@ -26,7 +26,6 @@ function getModKey() {
   return modKey
 }
 
-console.log(routes)
 watch(() => routes.path, async () => {
   const modKey = getModKey()
   if (Object.hasOwnProperty.call(modules, modKey)) {
