@@ -14,22 +14,21 @@ import Demo from '~/components/Demo/index.vue'
 const curCode = ref('')
 
 const routes = useRoute()
-const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw', eager: true })
-
+const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw' })
+const lowModules = new Map()
+for (const path in modules) {
+  lowModules.set(path.toLowerCase(), modules[path])
+}
 function getModKey() {
   const pathIndex = routes.path.split('/')
   pathIndex.shift()
-  const pathArr = pathIndex.map((item: string) => {
-    return item[0].toUpperCase() + item.slice(1)
-  })
-  const modKey = `../pages/${pathArr[0]}/${pathArr[1]}.vue`
+  const modKey = `../pages/${pathIndex[0]}/${pathIndex[1]}.vue`
   return modKey
 }
-
 watch(() => routes.path, async () => {
   const modKey = getModKey()
-  if (Object.hasOwnProperty.call(modules, modKey)) {
-    curCode.value = modules[modKey]
+  if (lowModules.has(modKey)) {
+    curCode.value = await lowModules.get(modKey)()
   }
 }, { immediate: true })
 </script>
