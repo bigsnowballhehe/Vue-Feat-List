@@ -25,10 +25,8 @@ const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw', eager: true }
 function getModKey() {
   const pathIndex = routes.path.split('/')
   pathIndex.shift()
-  const pathArr = pathIndex.map((item: string) => {
-    return item[0].toUpperCase() + item.slice(1)
-  })
-  const modKey = `../pages/${pathArr[0]}/${pathArr[1]}.vue`
+
+  const modKey = `../pages/${pathIndex[0]}/${pathIndex[1]}.vue`
   return modKey
 }
 
