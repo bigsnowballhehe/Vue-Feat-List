@@ -1,13 +1,7 @@
 <template>
   <div class="flex">
     <SiderBar />
-    <RouterView v-slot="{ Component }">
-      <Transition name="fade" mode="out-in">
-        <KeepAlive>
-          <component :is="Component" :key="routes.fullPath" />
-        </KeepAlive>
-      </Transition>
-    </RouterView>
+    <RouterView />
     <Demo :source-code="curCode || ''" />
   </div>
 </template>
@@ -20,20 +14,21 @@ import Demo from '~/components/Demo/index.vue'
 const curCode = ref('')
 
 const routes = useRoute()
-const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw', eager: true })
+const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw' })
 
 function getModKey() {
   const pathIndex = routes.path.split('/')
-  pathIndex.shift()
-
-  const modKey = `../pages/${pathIndex[0]}/${pathIndex[1]}.vue`
+  const pathArr = pathIndex.map((item: string) => {
+    return item[0].toUpperCase() + item.slice(1)
+  })
+  const modKey = `../pages/${pathArr[0]}/${pathArr[1]}.vue`
   return modKey
 }
 
 watch(() => routes.path, async () => {
   const modKey = getModKey()
   if (Object.hasOwnProperty.call(modules, modKey)) {
-    curCode.value = modules[modKey]
+    curCode.value = await modules[modKey]()
   }
 }, { immediate: true })
 </script>
