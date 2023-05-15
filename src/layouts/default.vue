@@ -20,7 +20,7 @@ import Demo from '~/components/Demo/index.vue'
 const curCode = ref('')
 
 const routes = useRoute()
-const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw' })
+const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw', eager: true })
 
 function getModKey() {
   const pathIndex = routes.path.split('/')
@@ -35,7 +35,7 @@ function getModKey() {
 watch(() => routes.path, async () => {
   const modKey = getModKey()
   if (Object.hasOwnProperty.call(modules, modKey)) {
-    curCode.value = await modules[modKey]()
+    curCode.value = modules[modKey]
   }
 }, { immediate: true })
 </script>
