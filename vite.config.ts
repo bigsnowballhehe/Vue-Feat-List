@@ -33,9 +33,6 @@ export default defineConfig(({ mode }) => ({
   server: {
     port: 3000,
   },
-  build: {
-    sourcemap: true,
-  },
   esbuild: {
     drop: mode === 'production' ? ['console', 'debugger'] : [],
   },

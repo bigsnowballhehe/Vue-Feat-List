@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang='ts'>
-console.log('I am Slots.vue')
+console.log('I am slots.vue,change')
 </script>
 
 <route lang="json5">

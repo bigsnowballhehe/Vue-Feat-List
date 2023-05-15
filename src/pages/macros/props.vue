@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang='ts'>
-// console.log(mod)
+console.log('props ')
 </script>
 
 <route lang="yaml">
