@@ -7,6 +7,4 @@
 </script>
 
 <route lang="yaml">
-meta:
-  title: props
 </route>

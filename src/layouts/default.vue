@@ -1,7 +1,13 @@
 <template>
   <div class="flex">
     <SiderBar />
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <Transition name="fade" mode="out-in">
+        <KeepAlive>
+          <component :is="Component" :key="routes.fullPath" />
+        </KeepAlive>
+      </Transition>
+    </RouterView>
     <Demo :source-code="curCode || ''" />
   </div>
 </template>

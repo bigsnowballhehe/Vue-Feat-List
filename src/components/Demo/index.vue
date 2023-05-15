@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="w-128" v-html="parseCode" />
+    <pre>
+      <code>{{ sourceCode }}</code>
+    </pre>
     <button class="cursor-pointer" @click="usePlayGround(props.sourceCode)">
       edit in SFC
     </button>
@@ -13,18 +15,6 @@ import { utoa } from '~/utils'
 const props = defineProps<{
   sourceCode: string
 }>()
-
-const parseCode = ref('')
-
-watch(() => props.sourceCode, async () => {
-  window.shiki
-    .getHighlighter({
-      theme: 'nord',
-    })
-    .then((highlighter: any) => {
-      parseCode.value = highlighter.codeToHtml(props.sourceCode, { lang: 'js' })
-    })
-})
 
 function usePlayGround(code: string) {
   const obj = {

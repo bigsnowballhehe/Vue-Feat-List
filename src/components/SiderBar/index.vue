@@ -9,7 +9,7 @@
           class="cursor-pointer p-2"
           @click="$router.push(route.path)"
         >
-          {{ route?.meta?.title }}
+          {{ route?.meta?.title || route.name }}
         </li>
       </ul>
     </div>
