@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mainapp text-gray-700 dark:text-gray-200">
     <RouterView />
   </div>
 </template>
@@ -8,6 +8,4 @@
 console.log('App.vue')
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

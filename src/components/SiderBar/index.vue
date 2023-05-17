@@ -1,14 +1,9 @@
 <template>
-  <div class="w-60 border-light-300 border-solid ">
+  <div class="w-60 border-black border-1 border-solid">
     <div>SiderBar</div>
     <div>
       <ul>
-        <li
-          v-for="route in localRoutes"
-          :key="route.name"
-          class="cursor-pointer p-2"
-          @click="$router.push(route.path)"
-        >
+        <li v-for="route in localRoutes" :key="route.name" class="cursor-pointer p-2" @click="$router.push(route.path)">
           {{ route?.meta?.title || route.name }}
         </li>
       </ul>

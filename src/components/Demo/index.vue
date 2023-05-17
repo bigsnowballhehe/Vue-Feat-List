@@ -1,11 +1,11 @@
 <template>
   <div>
+    <button class="cursor-pointer" @click="usePlayGround(props.sourceCode)">
+      Edit
+    </button>
     <pre>
       <code>{{ sourceCode }}</code>
     </pre>
-    <button class="cursor-pointer" @click="usePlayGround(props.sourceCode)">
-      edit in SFC
-    </button>
   </div>
 </template>
 

@@ -2,7 +2,6 @@ import path from 'node:path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import UnoCSS from 'unocss/vite'
-import presetUno from '@unocss/preset-uno'
 import AutoImport from 'unplugin-auto-import/vite'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
@@ -15,14 +14,12 @@ export default defineConfig(({ mode }) => ({
       exclude: ['**/components/*.vue'],
     }),
     Layouts(),
-    UnoCSS({
-      presets: [presetUno()],
-    }),
+    UnoCSS(),
     AutoImport({
-      imports: ['vue'],
+      imports: ['vue','@vueuse/core'],
       dts: true,
       vueTemplate: true,
-      cache: true,
+
     }),
   ],
   resolve: {

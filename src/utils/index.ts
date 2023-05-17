@@ -5,3 +5,5 @@ export function utoa(data: string): string {
   const binary = strFromU8(zipped, true)
   return btoa(binary)
 }
+export const isDark = useDark()
+export const toggleDark = useToggle(isDark)
