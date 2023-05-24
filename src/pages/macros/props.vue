@@ -6,5 +6,10 @@
 console.log('props ')
 </script>
 
-<route lang="yaml">
+<route lang="json5">
+  {
+    "meta": {
+      "title": "Props"
+    }
+  }
 </route>

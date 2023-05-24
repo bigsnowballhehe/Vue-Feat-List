@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => ({
     Layouts(),
     UnoCSS(),
     AutoImport({
-      imports: ['vue','@vueuse/core'],
+      imports: ['vue', '@vueuse/core'],
       dts: true,
       vueTemplate: true,
 

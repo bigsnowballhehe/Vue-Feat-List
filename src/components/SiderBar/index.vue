@@ -1,10 +1,15 @@
 <template>
-  <div class="w-60 border-black border-1 border-solid">
+  <div class="w-60">
     <div>SiderBar</div>
     <div>
       <ul>
-        <li v-for="route in localRoutes" :key="route.name" class="cursor-pointer p-2" @click="$router.push(route.path)">
-          {{ route?.meta?.title || route.name }}
+        <li v-for="routerItem in routerItems.keys()" :key="routerItem">
+          <span>{{ `${routerItem}:` }}</span>
+          <ul>
+            <li v-for="item in routerItems.get(routerItem)" :key="item.name" class="cursor-pointer p-2" @click="$router.push(item.path)">
+              {{ item.meta?.title }}
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -12,6 +17,8 @@
 </template>
 
 <script setup lang='ts'>
-import routes from '~pages'
-const localRoutes = routes.filter(route => route.name !== 'index')
+import type { RouteRecordRaw } from 'vue-router'
+defineProps<{
+  routerItems: Map<string, Set<RouteRecordRaw>>
+}>()
 </script>
