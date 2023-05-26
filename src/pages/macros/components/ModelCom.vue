@@ -1,7 +1,6 @@
 <template>
   <div>
     <slot />
-
     <input type="text" :value="inputOne" @input="emits('update:inputOne', (($event.target)as HTMLInputElement).value)">
   </div>
 </template>

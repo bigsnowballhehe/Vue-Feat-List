@@ -14,7 +14,7 @@
             <RouterView />
           </div>
           <button />
-          <Demo :source-code="curCode || ''" />
+          <Demo />
         </div>
       </div>
     </div>
@@ -22,11 +22,10 @@
 </template>
 
 <script setup lang='ts'>
-import { useRoute } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import SiderBar from '~/components/SiderBar/index.vue'
 import routes from '~pages'
-import Demo from '~/components/Demo/index.vue'
+import Demo from '~/components/demo.vue'
 import { toggleDark } from '~/utils/index'
 
 // sider管理
@@ -43,25 +42,4 @@ localRoutes.forEach((item) => {
     pathList.get(pathIndex[0])?.add(item)
   }
 })
-
-// 模块引入部分
-const curRoutes = useRoute()
-const curCode = ref('')
-const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw', eager: true })
-const lowModules = new Map()
-for (const path in modules) {
-  lowModules.set(path.toLowerCase(), modules[path])
-}
-function getModKey() {
-  const pathIndex = curRoutes.path.split('/')
-  pathIndex.shift()
-  const modKey = `../pages/${pathIndex[0]}/${pathIndex[1]}.vue`
-  return modKey
-}
-watch(() => curRoutes.path, async () => {
-  const modKey = getModKey()
-  if (lowModules.has(modKey)) {
-    curCode.value = lowModules.get(modKey)
-  }
-}, { immediate: true })
 </script>

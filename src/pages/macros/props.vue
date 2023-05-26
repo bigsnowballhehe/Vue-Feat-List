@@ -1,26 +1,23 @@
 <template>
   <div>
+    <span>Children's Input </span>
     <SnView v-model:input-one="inputVal">
       <span>Input: </span>
     </SnView>
+    <span>{{ `parent's val: ${inputVal}` }}</span>
   </div>
-  <div />
 </template>
 
 <script setup lang='ts'>
 import SnView from './components/ModelCom.vue'
 
 const inputVal = ref('')
-console.log(SnView)
-watch(inputVal, () => {
-  console.log(inputVal.value)
-})
 </script>
 
 <route lang="json5">
   {
     "meta": {
-      "title": "Props"
+      "title": "V-model in components"
     }
   }
 </route>
