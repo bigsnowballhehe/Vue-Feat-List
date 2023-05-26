@@ -10,7 +10,6 @@
 
 <script setup lang='ts'>
 import SnView from './components/ModelCom.vue'
-
 const inputVal = ref('')
 </script>
 

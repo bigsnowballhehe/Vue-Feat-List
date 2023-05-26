@@ -12,7 +12,8 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "test":"vitest"
   },
   "dependencies": {
     "@iconify-json/carbon": "^1.1.16",
