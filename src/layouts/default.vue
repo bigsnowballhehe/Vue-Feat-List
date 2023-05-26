@@ -1,14 +1,23 @@
 <template>
-  <nav class="text-xl mt-6 inline-flex gap-2 w-full flex-row-reverse">
-    <button class="icon-btn" @click="toggleDark()">
-      <div class="dark:i-carbon-moon i-carbon-sun" />
-    </button>
-    <a href="" class="icon-btn i-carbon-logo-github" />
-  </nav>
-  <div class="flex">
-    <SiderBar :router-items="pathList" />
-    <RouterView />
-    <Demo :source-code="curCode || ''" />
+  <div>
+    <div class="flex flex-col w-full">
+      <nav class="text-xl mt-6 inline-flex gap-2 w-full flex-row-reverse px-3">
+        <button class="icon-btn" @click="toggleDark()">
+          <div class="dark:i-carbon-moon i-carbon-sun" />
+        </button>
+        <a href="" class="icon-btn i-carbon-logo-github" />
+      </nav>
+      <div class="flex">
+        <SiderBar :router-items="pathList" />
+        <div>
+          <div class="my-6">
+            <RouterView />
+          </div>
+          <button />
+          <Demo :source-code="curCode || ''" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

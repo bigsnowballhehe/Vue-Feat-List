@@ -37,6 +37,7 @@
     "@vue/test-utils": "^2.3.2",
     "jsdom": "^22.0.0",
     "typescript": "^5.0.4",
+    "v-lazy-show": "^0.2.3",
     "vite": "^4.3.7",
     "vitest": "^0.31.0",
     "vue-tsc": "^1.6.5"

@@ -63,6 +63,9 @@ devDependencies:
   typescript:
     specifier: ^5.0.4
     version: 5.0.4
+  v-lazy-show:
+    specifier: ^0.2.3
+    version: 0.2.3
   vite:
     specifier: ^4.3.7
     version: 4.3.7(@types/node@20.1.7)
@@ -4067,6 +4070,12 @@ packages:
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: false
+
+  /v-lazy-show@0.2.3:
+    resolution: {integrity: sha512-YvQ0zr/7x1eiIsCMBltVUgFCzzMyvBXT9Sv58mpcTbaTIBT+CNwOnrUqZdxKpmakqg1ro/6KztQKFkBKzeYN3g==}
+    dependencies:
+      '@vue/compiler-core': 3.3.2
+    dev: true
 
   /validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
