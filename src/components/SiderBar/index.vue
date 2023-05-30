@@ -3,10 +3,10 @@
     <div>SiderBar</div>
     <div>
       <ul>
-        <li v-for="routerItem in routerItems.keys()" :key="routerItem">
-          <span>{{ `${routerItem}:` }}</span>
+        <li v-for="[key, value] in routerItems" :key="key">
+          <span>{{ `${key}:` }}</span>
           <ul>
-            <li v-for="item in routerItems.get(routerItem)" :key="item.name" class="cursor-pointer p-2" @click="$router.push(item.path)">
+            <li v-for="item in value" :key="item.name" class="cursor-pointer p-2" @click="$router.push(item.path)">
               {{ item.meta?.title }}
             </li>
           </ul>
