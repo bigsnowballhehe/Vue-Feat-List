@@ -76,6 +76,9 @@ let filterSku = {}
 
 function runFilter() {
   for (const [key, value] of curGoods) {
+    if (!selected.value.has(key)) {
+      enableList.value.delete(key)
+    }
     value.forEach((pri) => {
       Object.keys(filterSku).some((s) => {
         if (Number(s) % pri.value === 0) {
