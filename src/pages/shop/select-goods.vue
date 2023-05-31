@@ -66,7 +66,7 @@ const enableList = ref(new Map<CurSec, Set<number>>())
 
 const selected = ref(new Map<CurSec, number>())
 function handleClick(key: CurSec, index: number) {
-  if (selected.value.has(key) && selected.value.get(key) === index) {
+  if (selected.value.get(key) === index) {
     selected.value.delete(key)
     return
   }
@@ -79,24 +79,20 @@ watch(selected.value, () => {
     ivalue.forEach((pri) => {
       Object.keys(sku).some((str) => {
         let pris = 1
+        // expect selected by other type
         for (const [skey, svalue] of selected.value) {
           if (skey !== ikey && svalue) {
             pris *= svalue
           }
         }
         if (Number(str) % (pris * pri.value) === 0) {
-          if (Number(str) % pri.value === 0) {
-            if (enableList.value.has(ikey)) {
-              enableList.value.get(ikey)?.add(pri.value)
-            }
-            else {
-              enableList.value.set(ikey, (new Set<number>()).add(pri.value))
-            }
-            return true
+          if (enableList.value.has(ikey)) {
+            enableList.value.get(ikey)?.add(pri.value)
           }
           else {
-            return false
+            enableList.value.set(ikey, (new Set<number>()).add(pri.value))
           }
+          return true
         }
         else {
           return false
