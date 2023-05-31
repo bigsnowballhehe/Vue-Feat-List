@@ -9,7 +9,7 @@
           <button
             v-for="item in value "
             class="m-2 bg-blue p-2"
-            :class="{ 'bg-green': selected.get(key)?.includes(item.value) }"
+            :class="{ 'bg-green': selected.get(key) === (item.value) }"
             :disabled="!enableList.get(key)?.has(item.value)"
             @click="handleClick(key, item.value)"
           >
@@ -64,31 +64,39 @@ curGoods.set('size', [{ value: 5, text: 'xl' }, { value: 7, text: 'xxl' }])
 curGoods.set('style', [{ value: 11, text: 'new' }, { value: 13, text: 'old' }])
 const enableList = ref(new Map<CurSec, Set<number>>())
 
-const selected = ref(new Map<CurSec, number[]>())
+const selected = ref(new Map<CurSec, number>())
 function handleClick(key: CurSec, index: number) {
-  selected.value.set(key, [index])
-  let total = 1
-  for (const [_, value] of selected.value) {
-    value.forEach(i => total *= i)
+  if (selected.value.has(key) && selected.value.get(key) === index) {
+    selected.value.delete(key)
+    return
   }
+  selected.value.set(key, index)
 }
-let filterSku = {}
 
-function runFilter() {
-  for (const [key, value] of curGoods) {
-    if (!selected.value.has(key)) {
-      enableList.value.delete(key)
-    }
-    value.forEach((pri) => {
-      Object.keys(filterSku).some((s) => {
-        if (Number(s) % pri.value === 0) {
-          if (enableList.value.has(key)) {
-            enableList.value.get(key)?.add(pri.value)
+watch(selected.value, () => {
+  enableList.value.clear()
+  for (const [ikey, ivalue] of curGoods) {
+    ivalue.forEach((pri) => {
+      Object.keys(sku).some((str) => {
+        let pris = 1
+        for (const [skey, svalue] of selected.value) {
+          if (skey !== ikey && svalue) {
+            pris *= svalue
+          }
+        }
+        if (Number(str) % (pris * pri.value) === 0) {
+          if (Number(str) % pri.value === 0) {
+            if (enableList.value.has(ikey)) {
+              enableList.value.get(ikey)?.add(pri.value)
+            }
+            else {
+              enableList.value.set(ikey, (new Set<number>()).add(pri.value))
+            }
+            return true
           }
           else {
-            enableList.value.set(key, (new Set<number>()).add(pri.value))
+            return false
           }
-          return true
         }
         else {
           return false
@@ -96,30 +104,6 @@ function runFilter() {
       })
     })
   }
-}
-watch(selected.value, () => {
-  filterSku = {}
-  let pris = 1
-
-  if (selected.value.size) {
-    for (const [_, value] of selected.value) {
-      value.forEach((pri) => {
-        pris *= pri
-      })
-    }
-    Object.keys(sku).forEach((s) => {
-      if (Number(s) % pris === 0) {
-        // @ts-expect-error ...
-        filterSku[s] = sku[s]
-      }
-    })
-  }
-  else {
-    filterSku = { ...sku }
-  }
-
-  console.log(filterSku)
-  runFilter()
 }, { immediate: true })
 </script>
 
