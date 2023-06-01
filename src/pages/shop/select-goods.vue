@@ -4,7 +4,7 @@
     <span>I am select goods</span>
     <div>
       <div v-for="[key, value] of curGoods">
-        <span>{{ key }}</span>
+        <span class="font-600">{{ key }}</span>
         <div class="flex">
           <button
             v-for="item in value "
@@ -75,22 +75,26 @@ function handleClick(key: CurSec, index: number) {
 
 watch(selected.value, () => {
   enableList.value.clear()
-  for (const [ikey, ivalue] of curGoods) {
-    ivalue.forEach((pri) => {
+  for (const [ckey, cvalue] of curGoods) {
+    cvalue.forEach((pri) => {
       Object.keys(sku).some((str) => {
         let pris = 1
+        const numStr = Number(str)
         // expect selected by other type
         for (const [skey, svalue] of selected.value) {
-          if (skey !== ikey && svalue) {
+          if (skey !== ckey && svalue) {
             pris *= svalue
           }
         }
-        if (Number(str) % (pris * pri.value) === 0) {
-          if (enableList.value.has(ikey)) {
-            enableList.value.get(ikey)?.add(pri.value)
+        if (numStr < pri.value) {
+          return false
+        }
+        else if (numStr % (pris * pri.value) === 0) {
+          if (enableList.value.has(ckey)) {
+            enableList.value.get(ckey)?.add(pri.value)
           }
           else {
-            enableList.value.set(ikey, (new Set<number>()).add(pri.value))
+            enableList.value.set(ckey, (new Set<number>()).add(pri.value))
           }
           return true
         }

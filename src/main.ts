@@ -12,8 +12,8 @@ generatedRoutes.forEach((route) => {
     route.redirect = '/macros/props'
   }
 })
-
 const routes = setupLayouts(generatedRoutes)
+console.log(routes)
 const router = createRouter({
   history: createWebHashHistory(),
   routes,

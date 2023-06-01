@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang='ts'>
-import SnView from './components/ModelCom.vue'
+import SnView from './components/model-com.vue'
 const inputVal = ref('')
 </script>
 

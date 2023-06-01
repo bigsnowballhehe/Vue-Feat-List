@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => ({
       },
     }),
     Pages({
-      exclude: ['**/components/*.vue'],
+      exclude: ['**/components/*'],
     }),
     Layouts(),
     UnoCSS(),

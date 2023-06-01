@@ -29,17 +29,19 @@ import Demo from '~/components/demo.vue'
 import { toggleDark } from '~/utils/index'
 
 // sider管理
-const localRoutes = routes.filter(router => router.name !== 'index')
-const pathList = new Map<string, Set<RouteRecordRaw>>()
+
+const localRoutes = routes.filter(router => router.name !== 'index').reverse()
+const pathList = new Map<string, RouteRecordRaw[]>()
+
 localRoutes.forEach((item) => {
   const { path } = item
   const pathIndex = path.split('/')
   pathIndex.shift()
   if (!pathList.has(pathIndex[0])) {
-    pathList.set(pathIndex[0], (new Set<RouteRecordRaw>()).add(item))
+    pathList.set(pathIndex[0], new Array<RouteRecordRaw>(item))
   }
   else {
-    pathList.get(pathIndex[0])?.add(item)
+    pathList.get(pathIndex[0])?.push(item)
   }
 })
 </script>
