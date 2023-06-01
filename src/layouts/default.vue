@@ -5,15 +5,12 @@
         <button class="icon-btn" @click="toggleDark()">
           <div class="dark:i-carbon-moon i-carbon-sun" />
         </button>
-        <a href="" class="icon-btn i-carbon-logo-github" />
+        <a href="https://github.com/bigsnowballhehe/Vue-Feat-List" class="icon-btn i-carbon-logo-github" target="_blank" />
       </nav>
       <div class="flex">
         <SiderBar :router-items="pathList" />
-        <div>
-          <div class="my-6">
-            <RouterView />
-          </div>
-          <button />
+        <div class="w-full ml-12 mt-6">
+          <RouterView />
           <Demo />
         </div>
       </div>

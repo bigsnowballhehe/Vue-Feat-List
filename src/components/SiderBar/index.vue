@@ -1,5 +1,5 @@
 <template>
-  <div class="w-60">
+  <div class="w-60 mr-8">
     <span>SiderBar</span>
 
     <div>
