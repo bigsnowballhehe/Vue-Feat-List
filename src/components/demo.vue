@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="my-8">
     <div>
       <button class="btn" @click="codeType = !codeType ">
         SourceCode

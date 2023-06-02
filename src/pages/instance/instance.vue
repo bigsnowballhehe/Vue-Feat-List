@@ -2,9 +2,11 @@
   <div>
     <ForExpose
       ref="inst"
-      msg="test"
     />
-    <span>{{ val }}</span>
+
+    <button class="btn " @click="getNum">
+      Click to trigger
+    </button>
   </div>
 </template>
 
@@ -13,7 +15,9 @@ import ForExpose from './components/for-expose.vue'
 import type { ForExposeInstance } from './components/instype'
 
 const inst = ref<ForExposeInstance>()
-const val = inst.value?.postNum()
+function getNum() {
+  inst.value?.postNum()
+}
 </script>
 
  <route lang='json5'>

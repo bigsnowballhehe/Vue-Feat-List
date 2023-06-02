@@ -5,11 +5,10 @@
 </template>
 
 <script setup lang='ts'>
-defineProps<{
-  msg: string
-}>()
+const msg = ref(0)
+
 function postNum() {
-  return 'iam post'
+  msg.value++
 }
 defineOptions({
   name: 'ForTsx',
