@@ -1,5 +1,5 @@
 <template>
-  <div class="my-8">
+  <div v-show="isShow" class="my-8">
     <div>
       <button class="btn" @click="codeType = !codeType ">
         SourceCode
@@ -26,6 +26,7 @@ const codeType = ref(false)
 // 模块导入
 const curRoutes = useRoute()
 const curCode = ref('')
+
 const modules = import.meta.glob('../pages/**/*.vue', { as: 'raw', eager: true })
 const lowModules = new Map()
 for (const path in modules) {
@@ -43,6 +44,7 @@ watch(() => curRoutes.path, async () => {
     curCode.value = lowModules.get(modKey)
   }
 }, { immediate: true })
+const isShow = computed(() => curRoutes.meta.showDemo !== 'false')
 
 // 打开SFC Editor
 function usePlayGround(code: string) {

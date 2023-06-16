@@ -16,7 +16,7 @@ const inputVal = ref('')
 <route lang="json5">
   {
     "meta": {
-      "title": "V-model in components"
+      "title": "V-model"
     }
   }
 </route>

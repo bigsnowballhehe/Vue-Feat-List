@@ -19,7 +19,8 @@ const arrRef = ref([ref(1)])
  <route lang='json5'>
 {
  "meta": {
- "title": "Array with reactive"
+ "title": "Array with reactive",
+ "showDemo":"false"
  }
  }
  </route>
