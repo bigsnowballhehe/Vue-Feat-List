@@ -13,10 +13,11 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test":"vitest"
+    "test": "vitest"
   },
   "dependencies": {
     "@iconify-json/carbon": "^1.1.16",
+    "@iconify-json/tabler": "^1.1.79",
     "@snlan/eslint-config": "^1.0.2",
     "@types/node": "^20.1.7",
     "@unocss/preset-uno": "^0.51.13",

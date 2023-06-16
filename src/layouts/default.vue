@@ -2,10 +2,9 @@
   <div>
     <div class="flex flex-col w-full">
       <nav class="text-xl mt-6 inline-flex gap-2 w-full flex-row-reverse px-3">
-        <button class="icon-btn" @click="toggleDark()">
-          <div class="dark:i-carbon-moon i-carbon-sun" />
-        </button>
+        <button class="icon-btn dark:i-carbon-moon i-carbon-sun" @click="toggleDark()" />
         <a href="https://github.com/bigsnowballhehe/Vue-Feat-List" class="icon-btn i-carbon-logo-github" target="_blank" />
+        <a href="https://juejin.cn/user/2233851705851399" class="icon-btn i-tabler-brand-juejin" target="_blank" />
       </nav>
       <div class="flex">
         <SiderBar :router-items="pathList" />

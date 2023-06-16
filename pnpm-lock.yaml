@@ -4,6 +4,9 @@ dependencies:
   '@iconify-json/carbon':
     specifier: ^1.1.16
     version: 1.1.16
+  '@iconify-json/tabler':
+    specifier: ^1.1.79
+    version: 1.1.79
   '@snlan/eslint-config':
     specifier: ^1.0.2
     version: 1.0.2(eslint@8.40.0)(typescript@5.0.4)
@@ -471,6 +474,12 @@ packages:
 
   /@iconify-json/carbon@1.1.16:
     resolution: {integrity: sha512-AD8bcnRSGA0WfcGEass2FbA0sagrUzrpFx5WchuDy3uf7yKBWumdypdQK121DH321fQDl5+zZQ26T6gC9knwUQ==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/tabler@1.1.79:
+    resolution: {integrity: sha512-O3RtNqP5ZaP8abkLR/JJuqPY2JjsuV1ttK3xttbcCE9Uz11Pu1WpmbGJ8jv75DoAGYoZ784VUgL8oiJcINLblw==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false

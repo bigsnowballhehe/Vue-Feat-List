@@ -20,8 +20,8 @@
 import { useRoute } from 'vue-router'
 import { utoa } from '~/utils'
 
-// 展示部分逻辑
-const codeType = ref(true)
+// 展示逻辑
+const codeType = ref(false)
 
 // 模块导入
 const curRoutes = useRoute()

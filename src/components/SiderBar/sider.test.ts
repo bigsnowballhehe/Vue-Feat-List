@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
-import SiderBar from '../index.vue'
+import SiderBar from './index.vue'
 
 describe('test SiderBarvue', () => {
   const pathList = new Map()
